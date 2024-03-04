@@ -85,7 +85,8 @@ const Footer = () => {
           <div>
             <img src={logo} alt='Logo' />
             <p className='text-[16px] leading-7 font-[400] text-textColor mt-4'>
-              Copyright {year} developed by Victoria victor all right reserved.{" "}
+              Copyright © {year} developed by Victoria victor all right
+              reserved.{" "}
             </p>
 
             <div className='flex items-center gap-3 mt-4'>
