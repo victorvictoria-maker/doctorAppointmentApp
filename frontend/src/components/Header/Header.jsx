@@ -1,5 +1,4 @@
 import logo from "../../assets/images/logo.png";
-import userImage from "../../assets/images/avatar-icon.png";
 import { BiMenu } from "react-icons/bi";
 
 import { useEffect, useRef, useContext } from "react";
