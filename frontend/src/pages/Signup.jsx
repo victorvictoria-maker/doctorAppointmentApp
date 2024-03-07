@@ -23,7 +23,13 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const value = e.target.value;
+    const name = e.target.name;
+
+    // Ensure that the value is always defined
+    const newValue = value !== undefined ? value : "";
+
+    setFormData({ ...formData, [name]: newValue });
   };
 
   const handlePhotoSelection = async (e) => {
