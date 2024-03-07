@@ -1,5 +1,4 @@
 import signupImage from "../assets/images/signup.gif";
-// import avatar from "../assets/images/doctor-img01.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import uploadImageToCloudinary from "../utils/uploadCloudinary";
