@@ -25,4 +25,14 @@ const reviewSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// adjusting the review schema so the user who adds review details can be gotten
+reviewSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "user",
+    select: "name photo",
+  });
+
+  next();
+});
+
 export default mongoose.model("Review", reviewSchema);
