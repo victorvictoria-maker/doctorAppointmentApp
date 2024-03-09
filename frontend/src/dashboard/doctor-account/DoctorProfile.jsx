@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import uploadImageToCloudinary from "./../../utils/uploadCloudinary";
 import { BASE_URL, token } from "./../../config.js";
@@ -39,24 +39,15 @@ const DoctorProfile = ({ doctorData }) => {
     });
   }, [doctorData]);
 
-  const fileInputRef = useRef(null);
-  const isFileSelectedRef = useRef(false);
-
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handlePhotoSelection = async (e) => {
-    if (!isFileSelectedRef.current) {
-      isFileSelectedRef.current = true;
-      console.log("Hi");
-      return;
-    }
-
     const file = e.target.files[0];
+
     // using cloudinary to upload the picture
     const data = await uploadImageToCloudinary(file);
-    // console.log(data?.url);
     setFormData({ ...formData, photo: data?.url });
   };
 
@@ -517,7 +508,6 @@ const DoctorProfile = ({ doctorData }) => {
 
           <div className='relative w-[130px] h-[50px]'>
             <input
-              ref={fileInputRef}
               type='file'
               name='photo'
               id='customerFile'

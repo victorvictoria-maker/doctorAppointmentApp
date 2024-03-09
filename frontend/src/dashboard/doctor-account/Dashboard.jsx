@@ -7,6 +7,7 @@ import { useState } from "react";
 import StarIcon from "../../assets/images/Star.png";
 import DoctorAbout from "../../pages/Doctors/DoctorAbout";
 import DoctorProfile from "./DoctorProfile";
+import Appointments from "./Appointments";
 
 const Dashboard = () => {
   const { data, loading, error } = useGetProfile(
@@ -93,7 +94,9 @@ const Dashboard = () => {
                     />
                   </div>
                 )}
-                {tab === "appointments" && <div>Appointments</div>}
+                {tab === "appointments" && (
+                  <Appointments appointments={data.appointments} />
+                )}
                 {tab === "profile" && (
                   <div>
                     <DoctorProfile doctorData={data} />
