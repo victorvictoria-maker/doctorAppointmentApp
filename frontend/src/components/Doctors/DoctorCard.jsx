@@ -12,6 +12,8 @@ const DoctorCard = (doctor) => {
     experiences,
   } = doctor.doctor;
 
+  let doctorId = doctor.doctor._id;
+
   return (
     <div className='p-3 lg:p-5'>
       <div>
@@ -47,7 +49,7 @@ const DoctorCard = (doctor) => {
         </div>
 
         <Link
-          to='/doctors'
+          to={`/doctors/${doctorId}`}
           className='w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] flex items-center justify-center group hover:bg-primaryColor hover:border-none'
         >
           <BsArrowRight className='group-hover:text-white w-6 h-5' />
