@@ -10,15 +10,17 @@ const MyBookings = () => {
     loading,
     error,
   } = useFetchData(`${BASE_URL}/users/appointments/my-appointments`);
+
+  // console.log(appointments);
   return (
     <div>
       {loading && !error && <Loading />}
       {error && !loading && <Error errorMessage={error} />}
 
-      {!Loading && !error && (
+      {!loading && !error && (
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
           {appointments.map((doctor, index) => {
-            return <DoctorCard key={index} doctor={doctor._id} />;
+            return <DoctorCard key={index} doctor={doctor} />;
           })}
         </div>
       )}

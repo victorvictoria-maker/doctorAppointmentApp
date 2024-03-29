@@ -1,7 +1,35 @@
 import convertTime from "../../utils/convertTime";
+import { toast } from "react-toastify";
+import { BASE_URL, token } from "./../../config";
+import { useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const SidePanel = ({ doctorId, ticketPrice, timeSlots }) => {
+  const navigate = useNavigate();
+
+  const bookingHandler = async () => {
+    try {
+      const res = await fetch(`${BASE_URL}/bookings/${doctorId}`, {
+        method: "post",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message + "Please try again");
+      } else {
+        toast.success("Successful booking");
+        navigate("/users/profile/me");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
+
   return (
     <div className='shadow-panelShadow p-3 lg:p-5 rounded-md'>
       <div className='flex items-center justify-between'>
@@ -36,7 +64,9 @@ const SidePanel = ({ doctorId, ticketPrice, timeSlots }) => {
         </ul>
       </div>
 
-      <button className='btn px-2 w-full rounded-md'>Book Appointment</button>
+      <button className='btn px-2 w-full rounded-md' onClick={bookingHandler}>
+        Book Appointment
+      </button>
     </div>
   );
 };

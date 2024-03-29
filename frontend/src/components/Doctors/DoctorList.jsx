@@ -13,7 +13,7 @@ const DoctorList = () => {
       {loading && <Loading />}
       {error && <Error />}
       {!loading && !error && (
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-[30px] mt-[30px] lg:mt-[55px]'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-[30px] mt-[30px] lg:mt-[55px] mt-5'>
           {doctors.map((doctor) => (
             <DoctorCard key={doctor._id} doctor={doctor} />
           ))}
